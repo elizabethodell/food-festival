@@ -1,48 +1,14 @@
-require("bootstrap");
-const img1 = require("../../assets/img/food-table.jpg");
-const img2 = require("../../assets/img/grill.jpg");
+require('bootstrap');
+const img1 = require("../img/food-table.jpg");
+const img2 = require("../img/grill.jpg");
 
 $(document).ready(function() {
-  function createEl(htmlString, attrs, ...children) {
-    if (typeof htmlString !== "string") {
-      throw Error("Argument 'htmlString' is required and must be a string");
-    }
-  
-    const el = document.createElement(htmlString);
-  
-    if (typeof attrs === "object") {
-      for (let key in attrs) {
-        if (key.substring(0, 2) === "on") {
-          el.addEventListener(key.substring(2).toLowerCase(), attrs[key]);
-        } else {
-          el.setAttribute(key, attrs[key]);
-        }
-      }
-    }
-  
-    children.forEach(function(child) {
-      let node;
-  
-      if (child.constructor.name.includes("Element")) {
-        node = child;
-      } else {
-        node = document.createTextNode(child);
-      }
-  
-      el.appendChild(node);
-    });
-  
-    return el;
-  };
-
-
-
   // First image is hard coded in index.html
   const carouselSlides = [
     {
       title: "We travel all over the US",
       subtitle: "Check out our schedule!",
-      img: "img1",
+      img: img1,
       btnText: "View Schedule",
       btnUrl: "schedule.html"
     },
@@ -53,8 +19,8 @@ $(document).ready(function() {
       btnText: "Purchase Tickets",
       btnUrl: "tickets.html"
     },
-  ]
-
+  ];
+  
   carouselSlides.forEach((slide, i) => {
     $('.carousel-inner').append(`
   <div class="carousel-item fullscreen-carousel" style="background-image: url('${slide.img}')">
